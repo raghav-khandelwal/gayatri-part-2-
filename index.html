@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reasons Why I Love You, Gayatri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:        #ffd6e8;
+    --blush-deep:   #f6a8c9;
+    --sky:          #bfe0f7;
+    --sky-deep:     #9cc9ef;
+    --periwinkle:   #cdd3f5;
+    --cream:        #fff8fb;
+    --ink:          #4a3b52;
+    --ink-soft:     #7a6b84;
+    --gold:         #f3cf9b;
+    --shadow-pink:  rgba(246,168,201,.45);
+    --shadow-blue:  rgba(156,201,239,.45);
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+    overflow-x:hidden;
+  }
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,214,232,.9), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(191,224,247,.85), transparent 50%),
+      radial-gradient(circle at 50% 90%, rgba(205,211,245,.6), transparent 55%),
+      linear-gradient(160deg, #fff8fb 0%, #fdf3f8 40%, #f2f7fd 100%);
+    background-attachment:fixed;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- ambient drifting glow blobs ---------- */
+  .blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:.55;
+    z-index:0;
+    pointer-events:none;
+  }
+  .blob.one{
+    width:340px;height:340px;
+    background:var(--blush);
+    top:-80px; left:-100px;
+    animation:driftA 22s ease-in-out infinite;
+  }
+  .blob.two{
+    width:300px;height:300px;
+    background:var(--sky);
+    bottom:-100px; right:-80px;
+    animation:driftB 26s ease-in-out infinite;
+  }
+  .blob.three{
+    width:220px;height:220px;
+    background:var(--periwinkle);
+    top:40%; right:-60px;
+    animation:driftA 30s ease-in-out infinite reverse;
+  }
+  @keyframes driftA{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(30px,40px) scale(1.08); }
+  }
+  @keyframes driftB{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(-25px,-30px) scale(1.05); }
+  }
+
+  /* ---------- layout shell ---------- */
+  .page{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:640px;
+    padding:48px 20px 24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    flex:1;
+  }
+
+  header{
+    text-align:center;
+    margin-bottom:8px;
+  }
+
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--blush-deep);
+    font-weight:600;
+    margin:0 0 10px;
+  }
+
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:clamp(2.1rem, 6vw, 3.1rem);
+    line-height:1.15;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+
+  h1 .name{
+    font-style:italic;
+    color:var(--blush-deep);
+    position:relative;
+  }
+
+  .subheading{
+    font-size:1rem;
+    color:var(--ink-soft);
+    max-width:420px;
+    margin:0 auto;
+    line-height:1.6;
+  }
+
+  /* ---------- interactive stage ---------- */
+  .stage{
+    position:relative;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:28px 0 12px;
+    min-height:340px;
+  }
+
+  .aura{
+    position:absolute;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--shadow-pink) 0%, var(--shadow-blue) 55%, transparent 72%);
+    filter:blur(6px);
+    animation:pulse 4.5s ease-in-out infinite;
+    z-index:0;
+  }
+  @keyframes pulse{
+    0%,100%{ transform:scale(1); opacity:.9; }
+    50%{ transform:scale(1.08); opacity:1; }
+  }
+
+  .penguin-btn{
+    position:relative;
+    z-index:2;
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    width:200px;
+    height:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    -webkit-tap-highlight-color:transparent;
+    border-radius:50%;
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1);
+  }
+  .penguin-btn:hover{ transform:translateY(-4px) scale(1.03); }
+  .penguin-btn:active{ transform:scale(.94); }
+  .penguin-btn:focus-visible{
+    outline:3px solid var(--sky-deep);
+    outline-offset:8px;
+  }
+
+  .penguin-btn svg{
+    width:100%;
+    height:100%;
+    filter:drop-shadow(0 14px 22px rgba(120,90,140,.28));
+    animation:bob 3.2s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform:translateY(0) rotate(-1deg); }
+    50%{ transform:translateY(-9px) rotate(1deg); }
+  }
+
+  .tap-hint{
+    margin-top:2px;
+    font-size:.85rem;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:6px;
+    opacity:.85;
+    animation:hintFade 2.6s ease-in-out infinite;
+  }
+  @keyframes hintFade{
+    0%,100%{ opacity:.55; }
+    50%{ opacity:1; }
+  }
+
+  /* ---------- speech bubble ---------- */
+  .bubble-wrap{
+    position:relative;
+    z-index:3;
+    min-height:96px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:4px;
+  }
+
+  .bubble{
+    position:relative;
+    max-width:340px;
+    background:linear-gradient(180deg, #ffffff 0%, #fff5f9 100%);
+    border:1px solid rgba(246,168,201,.4);
+    border-radius:22px;
+    padding:18px 24px;
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.32rem;
+    font-style:italic;
+    color:var(--ink);
+    box-shadow:0 18px 34px rgba(150,110,150,.18), 0 2px 8px rgba(150,110,150,.1);
+    opacity:0;
+    transform:translateY(14px) scale(.94);
+    transition:opacity .38s ease, transform .38s cubic-bezier(.34,1.56,.64,1);
+  }
+  .bubble::before{
+    content:"";
+    position:absolute;
+    top:-9px;
+    left:50%;
+    transform:translateX(-50%) rotate(45deg);
+    width:16px;
+    height:16px;
+    background:#ffffff;
+    border-left:1px solid rgba(246,168,201,.4);
+    border-top:1px solid rgba(246,168,201,.4);
+    border-radius:3px;
+  }
+  .bubble.show{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+
+  /* ---------- floating particle effects ---------- */
+  .fx-layer{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:visible;
+    z-index:4;
+  }
+  .fx-piece{
+    position:absolute;
+    left:50%;
+    top:50%;
+    font-size:1.1rem;
+    will-change:transform, opacity;
+    animation:floatUp 1.6s ease-out forwards;
+  }
+  @keyframes floatUp{
+    0%{
+      opacity:0;
+      transform:translate(-50%,-50%) translate(var(--dx0), var(--dy0)) scale(.4) rotate(0deg);
+    }
+    15%{
+      opacity:1;
+    }
+    100%{
+      opacity:0;
+      transform:translate(-50%,-50%) translate(var(--dx1), var(--dy1)) scale(1) rotate(var(--rot));
+    }
+  }
+
+  /* ---------- bottom section ---------- */
+  .unlocked-section{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:640px;
+    padding:18px 0 40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .progress{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+  }
+
+  .progress-text{
+    font-size:.82rem;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+
+  .progress-track{
+    width:120px;
+    height:6px;
+    border-radius:999px;
+    background:rgba(122,107,132,.15);
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--blush-deep), var(--sky-deep));
+    transition:width .6s cubic-bezier(.34,1.2,.64,1);
+    width:0%;
+  }
+
+  .carousel-frame{
+    width:100%;
+    background:rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.7);
+    backdrop-filter:blur(6px);
+    border-radius:26px;
+    padding:22px 18px;
+    box-shadow:0 20px 40px rgba(150,110,150,.12);
+  }
+
+  .carousel{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding:6px 4px 12px;
+    scroll-snap-type:x proximity;
+    scrollbar-width:thin;
+    scrollbar-color:var(--blush-deep) transparent;
+  }
+  .carousel::-webkit-scrollbar{ height:6px; }
+  .carousel::-webkit-scrollbar-thumb{ background:var(--blush-deep); border-radius:999px; }
+  .carousel::-webkit-scrollbar-track{ background:transparent; }
+
+  .reason-pill{
+    flex:0 0 auto;
+    scroll-snap-align:start;
+    max-width:250px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(135deg, #fff 0%, #fff0f6 100%);
+    border:1px solid rgba(246,168,201,.35);
+    border-radius:18px;
+    padding:12px 16px;
+    font-size:.92rem;
+    line-height:1.4;
+    color:var(--ink);
+    box-shadow:0 8px 18px rgba(150,110,150,.1);
+    animation:pillIn .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  .reason-pill .heart-mark{
+    flex:0 0 auto;
+    color:var(--blush-deep);
+    font-size:1rem;
+  }
+  @keyframes pillIn{
+    from{ opacity:0; transform:translateY(10px) scale(.9); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+  }
+
+  .empty-hint{
+    text-align:center;
+    font-size:.85rem;
+    color:var(--ink-soft);
+    padding:8px 12px;
+  }
+
+  .more-note{
+    text-align:center;
+    font-size:.78rem;
+    color:var(--ink-soft);
+    opacity:.8;
+    margin-top:10px;
+    letter-spacing:.02em;
+  }
+
+  footer.signature{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:.95rem;
+    color:var(--ink-soft);
+    padding:6px 0 30px;
+    z-index:1;
+    position:relative;
+  }
+
+  @media (max-width:420px){
+    .penguin-btn{ width:170px; height:170px; }
+    .aura{ width:230px; height:230px; }
+    .bubble{ font-size:1.15rem; padding:16px 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+  <div class="blob three"></div>
+
+  <div class="page">
+    <header>
+      <p class="eyebrow">Hey God this is a small token of appreciation from ur follower</p>
+      <h1>Reasons Why I Love You,<br><span class="name">Gayatri</span></h1>
+      <p class="subheading">Tap Pengu — every visit, he's got a new reason waiting for you.</p>
+    </header>
+
+    <section class="stage" aria-label="Interactive Pengu">
+      <div class="aura" aria-hidden="true"></div>
+
+      <button
+        class="penguin-btn"
+        id="penguinBtn"
+        aria-label="Tap Pengu to reveal a reason why I love you"
+        type="button"
+      >
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- soft ground shadow -->
+          <ellipse cx="100" cy="193" rx="44" ry="7" fill="#f6a8c9" opacity="0.25"/>
+
+          <!-- flippers, tucked behind the body -->
+          <ellipse cx="33" cy="128" rx="24" ry="46" fill="#232025" transform="rotate(-14 33 128)"/>
+          <ellipse cx="167" cy="128" rx="24" ry="46" fill="#232025" transform="rotate(14 167 128)"/>
+
+          <!-- round chibi body, black -->
+          <path d="M100 22c38 0 65 33 65 73 0 35 0 65-17 87-15 18-81 18-96 0-17-22-17-52-17-87 0-40 27-73 65-73z" fill="#232025"/>
+
+          <!-- white face + belly patch -->
+          <ellipse cx="100" cy="78" rx="44" ry="46" fill="#ffffff"/>
+          <ellipse cx="100" cy="150" rx="48" ry="50" fill="#ffffff"/>
+
+          <!-- feet -->
+          <ellipse cx="76" cy="189" rx="15" ry="7" fill="#f4b3c2"/>
+          <ellipse cx="124" cy="189" rx="15" ry="7" fill="#f4b3c2"/>
+
+          <!-- scarf, pink with a sage hanging patch -->
+          <rect x="108" y="120" width="24" height="44" rx="7" fill="#eea7bb"/>
+          <rect x="111" y="146" width="18" height="22" rx="4" fill="#a7c8a2"/>
+          <path d="M52 109c0-7 96-7 96 0v13c0 7-96 7-96 0z" fill="#f0acbf"/>
+
+          <!-- cheeks -->
+          <ellipse cx="63" cy="90" rx="9" ry="5.5" fill="#f6a8c9" opacity="0.55"/>
+          <ellipse cx="137" cy="90" rx="9" ry="5.5" fill="#f6a8c9" opacity="0.55"/>
+
+          <!-- eyes -->
+          <circle cx="78" cy="74" r="8.5" fill="#232025"/>
+          <circle cx="122" cy="74" r="8.5" fill="#232025"/>
+          <circle cx="81" cy="71" r="2.3" fill="#fff"/>
+          <circle cx="125" cy="71" r="2.3" fill="#fff"/>
+
+          <!-- beak -->
+          <path d="M89 86c0-7 22-7 22 0 0 9-11 14-11 14s-11-5-11-14z" fill="#f7bccb"/>
+
+          <!-- curled forelock -->
+          <path d="M55 48c-15-4-20-22-5-31-5 11-2 22 11 26-1 3-3 5-6 5z" fill="#f4bcc9"/>
+        </svg>
+      </button>
+
+      <p class="tap-hint">✨ tap him</p>
+
+      <div class="bubble-wrap">
+        <div class="bubble" id="bubble" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+    </section>
+  </div>
+
+  <section class="unlocked-section" aria-label="Unlocked reasons">
+    <div class="progress">
+      <span class="progress-text" id="progressText">0 of 0 unlocked</span>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <div class="carousel-frame">
+      <div class="carousel" id="carousel">
+        <p class="empty-hint" id="emptyHint">Your reasons will appear here the moment he shares one 🐧</p>
+      </div>
+      <p class="more-note">More reasons will keep unlocking every time you visit.</p>
+    </div>
+  </section>
+
+  <footer class="signature">I LOVE U MORE HEH I WIN 💌</footer>
+
+<script>
+(function(){
+  // ---- Easy-to-edit reasons list ----
+  const reasons = [
+    "I love you because well you are gayatri",
+    "I love you because you make me feel seen🩷",
+    "I love you for always making me blush when i see your notification😳",
+    "I love you for never judging me🩷",
+    "I love you for always making me feel good about myself",
+    "I love you cuz I care about you",
+    "I love you because i want to be there for you whenever you feel sad",
+    "I love you because of your tiny little sarcasm",
+    "I love you because it does not feel forced",
+    "I love you because you are the prettiest girl in the world",
+    "I love you for being my good luck charm",
+    "I love you for breathing the same air as me🫃",
+    "I love you for rebuilding my confidence",
+    "I love you for never giving up on me",
+    "I love you for making me question my existence whenever the coin flip lady comes.😛",
+    "I love you because STOMACH(self explanatory)",
+    "I love you for being my favourite person",
+    "I love you for accepting ME",
+    "I love you for ranting about football",
+    "I love you for the way you say my name randomly while talking",
+    "I love you for being my safe space",
+    "I love you because of our sometimes awkward but deep conversations",
+    "I love you for being so strong even though you have been through a lot",
+    "I love you and just know that you deserve so much more",
+    "I love you and your victoria secrets bra😳",
+    "I love you for being the most understanding person evaaaa",
+    "I love you because whenever im sad I look at my wallpaper and it makes me happy🩷",
+    "I love you for being such a hatercell🫦",
+    "I love you because you dont drink water(drink your water babe)",
+    "I love you for being a yapperr cause im always there to listen to it",
+    "I love you for your crashouts",
+    "I love you for your insecurities",
+    "I love you for the random 2 am thoughts you have",
+    "I love you for the random pictures that make my day",
+    "I love you cause I dont feel afraid to express myself around you",
+    "I love you cause we on the same freakuency👅",
+    "I love you cause the sun gets jealous of your hotness",
+    "I love you for correcting my grammar",
+    "I love you for the 4-5 hour calls we have",
+    "I love you because your feed is the best",
+    "I love you because you are my GOD🛐🛐",
+    "I love you because you love me(i love you more so i win heh)",
+    "I love you because you wake up everyday and send me the 'HII BABY'",
+    "I love you because I want to make you feel like the happiest girl in the world",
+    "I love you for supporting me through my random mood swings",
+    "I love you for teaching me how to LOVE",
+    "I love being weird with you",
+    "I love you for bullying me 👅",
+    "I love you because I miss you randomly during the day",
+    "I love you because the pink car outside my gym now reminds me of you",
+    "I love you because you make me want to become better for you",
+    "I love you because im obsessed with you more than your ghost",
+    "I love you because you're mine and im yours",
+    "I love you for being the yin to my yang",
+    "I love you for the reassurance you give me whenever i feel insecure",
+    "I love you for being my bestfriend",
+    "I love you cause you rizz me up😛",
+    "I love you because you are so kind ",
+    "I love you cause I get jealous when anyone else messages you",
+    "I love you because almost everything reminds me of you",
+    "I love you because you are worth the wait and the distance",
+    "I love you cause you're literally my princess",
+    "I love you for the warmth your hehehaha brings to me",
+    "I love you for texting me even though you are in a bar with your dad",
+    "I love you for making me feel confident enough to click pix of myself",
+    "I love you for making me feel confused",
+    "I love you for your rants about life",
+    "I love you for the hate you have for onion",
+    "I love you for saying ur all mine",
+    "I love you being so mature about things",
+    "I love you because you made me an obsessed loverboy",
+    "I love you because putting efforts for you does not feel like work",
+    "I love you because i kiss my phones camera for you",
+    "I love you because you are not embarassed of me",
+    "I love you because i am proud of you",
+    "I love you because you deserve all the love that my heart can give",
+    "I love you for liking every story on my main(ur learning from me)",
+    "I love you for the compliments you give me they make my day",
+    "I love you cause i could write a 100 reasons why I love you in 10 minutes",
+    "I love you for the long paragraphs i write to you whereas i just say one word replies to everyone else",
+    "I love you for never hanging up the call on me",
+    "I love you for being SO HOT 🫦🫦",
+    "I love you because I can talk about you to anyone for hours",
+    "I love you cause I love your voice notes",
+    "I love you because I actively find things to talk to you about",
+    "I love you because you have been the only person in my dreams now",
+    "I love you because I respect and adore you",
+    "I love you because i want to gatekeep you from everyone",
+    "I love you because i get jealous when ur friends comment if you can be their girlfriend",
+    "I love you because even LOVE cannot describe what i feel for you",
+    "I love you because you are so unapologetically YOU",
+    "I love you because i wont stop finding reasons to love you",
+    "I love you for choosing me over banananito (fuck that guy)😛",
+    "I love you for being an ipad baby and my baby",
+    "I love you because i love telling you about my day",
+    "I love you for asking me random questions",
+    "I love you for saying 'sleep well' to me everynight",
+    "I love you because i still have a crush on you even though you are mine",
+    "I love you because i am so very down bad for you👅",
+    "I love you for always hearing my little problems out even though you must have yours",
+    "I love you because i imagine you on the 'left side of my bed'"
+  ];
+
+  const penguinBtn   = document.getElementById('penguinBtn');
+  const bubble       = document.getElementById('bubble');
+  const fxLayer      = document.getElementById('fxLayer');
+  const carousel     = document.getElementById('carousel');
+  const emptyHint    = document.getElementById('emptyHint');
+  const progressText = document.getElementById('progressText');
+  const progressFill = document.getElementById('progressFill');
+
+  // in-memory state only
+  const unlocked = [];               // preserves order of first unlock
+  const unlockedSet = new Set();     // fast lookup for de-duplication
+  let lastIndex = -1;
+  let bubbleTimer = null;
+
+  function pickReasonIndex(){
+    if (reasons.length === 1) return 0;
+    let idx;
+    do {
+      idx = Math.floor(Math.random() * reasons.length);
+    } while (idx === lastIndex);
+    return idx;
+  }
+
+  function showBubble(text){
+    clearTimeout(bubbleTimer);
+    bubble.classList.remove('show');
+    // force reflow so re-triggering the animation works even for repeats
+    void bubble.offsetWidth;
+    bubble.textContent = text;
+    requestAnimationFrame(() => bubble.classList.add('show'));
+  }
+
+  function spawnEffects(){
+    const symbols = ['💗','✨','💫','💙','🩷'];
+    const count = 10;
+    for (let i = 0; i < count; i++){
+      const el = document.createElement('span');
+      el.className = 'fx-piece';
+      el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+      const angle = (Math.PI * 2 * i) / count + (Math.random() * 0.6 - 0.3);
+      const dist0 = 6 + Math.random() * 6;
+      const dist1 = 70 + Math.random() * 60;
+
+      el.style.setProperty('--dx0', `${Math.cos(angle) * dist0}px`);
+      el.style.setProperty('--dy0', `${Math.sin(angle) * dist0}px`);
+      el.style.setProperty('--dx1', `${Math.cos(angle) * dist1}px`);
+      el.style.setProperty('--dy1', `${Math.sin(angle) * dist1 - 40}px`);
+      el.style.setProperty('--rot', `${(Math.random() * 60 - 30)}deg`);
+      el.style.animationDelay = `${Math.random() * 0.12}s`;
+
+      fxLayer.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
+    }
+  }
+
+  function renderCarousel(){
+    carousel.innerHTML = '';
+
+    if (unlocked.length === 0){
+      carousel.appendChild(emptyHint);
+    } else {
+      unlocked.forEach(text => {
+        const pill = document.createElement('div');
+        pill.className = 'reason-pill';
+        pill.innerHTML = `<span class="heart-mark">🩷</span><span>${text}</span>`;
+        carousel.appendChild(pill);
+      });
+      // keep the newest pill in view
+      carousel.scrollLeft = carousel.scrollWidth;
+    }
+
+    const pct = reasons.length ? (unlocked.length / reasons.length) * 100 : 0;
+    progressFill.style.width = `${pct}%`;
+    progressText.textContent = `${unlocked.length} of ${reasons.length} unlocked`;
+  }
+
+  function revealReason(){
+    const idx = pickReasonIndex();
+    lastIndex = idx;
+    const text = reasons[idx];
+
+    showBubble(text);
+    spawnEffects();
+
+    if (!unlockedSet.has(text)){
+      unlockedSet.add(text);
+      unlocked.push(text);
+      renderCarousel();
+    }
+  }
+
+  penguinBtn.addEventListener('click', revealReason);
+  penguinBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      revealReason();
+    }
+  });
+
+  renderCarousel();
+})();
+</script>
+
+</body>
+</html>
